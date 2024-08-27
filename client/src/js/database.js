@@ -16,9 +16,9 @@ const initdb = async () =>
 export const putDb = async (content) => {
   console.log('Adding content to the database:', content);
 
-  const kittiesDb = await openDB("kitties", 1);
-  const tx = kittiesDb.transaction("kitties", "readwrite");
-  const store = tx.objectStore("kitties");
+  const kittiesDb = await openDB("vacations", 1);
+  const tx = kittiesDb.transaction("vacations", "readwrite");
+  const store = tx.objectStore("vacations");
   const request = store.put({ id: 1, value: content });
   const result = await request;
 
@@ -28,7 +28,7 @@ export const putDb = async (content) => {
     console.log("Saved data:", savedData.value);
     return savedData.value;
   } else {
-    console.log("The cat ran away with the note! It wasn't saved to the database!");
+    console.log("I think your still on vacation we didn't make it to the database!");
     return null;
   }
 };
@@ -37,17 +37,29 @@ export const putDb = async (content) => {
 export const getDb = async () => {
   console.log("Get all notes from the database");
 
-  const kittiesDb = await openDB("kitties", 1);
-  const tx = kittiesDb.transaction("kitties", "readonly");
-  const store = tx.objectStore("kitties");
+  const kittiesDb = await openDB("vacations", 1);
+  const tx = kittiesDb.transaction("vacations", "readonly");
+  const store = tx.objectStore("vacations");
   const request = store.get(1);
   const result = await request;
 
   result
     ? console.log("Notes retrieved from database:", result.value)
-    : console.log("No notes found in database! The cat must have stolen them!");
+    : console.log("No notes found in database! Mind still on that trip?");
 
   return result?.value;
+};
+
+export const deleteDb = async () => {
+  console.log("Uh oh! Vacation is no where near today!");
+  const kittiesDb = await openDB("vacations", 1);
+  const tx = kittiesDb.transaction("vacations", "readwrite");
+  const store = tx.objectStore("vacations");
+  const request = store.delete(1);
+  await request;
+
+  console.log("Note has been removed from the database");
+  return true;
 };
 
 initdb();

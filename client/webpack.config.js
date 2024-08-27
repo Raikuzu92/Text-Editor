@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
-const { InjectManifest } = require('workbox-webpack-plugin');
+
 
 // TODO: Add and configure workbox plugins for a service worker and manifest file.
 const { InjectManifest } = require("workbox-webpack-plugin");
@@ -22,7 +22,7 @@ module.exports = () => {
       // Webpack plugin that generates the html file and injects the bundles.
       new HtmlWebpackPlugin({
         template: "./index.html",
-        title: "K.I.T.T.I.E.S",
+        title: "Vacation is all I've ever wanted!",
         favicon: "./favicon.ico",
       }),
       // Injects the custom service worker
@@ -34,9 +34,9 @@ module.exports = () => {
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
-        name: "Kitten Impregnable Thoughts Text In-Line Editing Software",
-        short_name: "K.I.T.T.I.E.S.",
-        description: "Thoughts that even cats can't tear up!",
+        name: "The adventures of Jamaica",
+        short_name: "Vacation how to get away",
+        description: "That was the best trip I have ever had the rum was so strong",
         favicon: "./favicon.ico",
         // Theme and background color pulled from duotone-light.min.css
         background_color: "#faf8f5",
@@ -87,25 +87,25 @@ module: {
 };
 };
 
-module.exports = () => {
-  return {
-    mode: 'development',
-    entry: {
-      main: './src/js/index.js',
-      install: './src/js/install.js'
-    },
-    output: {
-      filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'dist'),
-    },
-    plugins: [
+// module.exports = () => {
+//   return {
+//     mode: 'development',
+//     entry: {
+//       main: './src/js/index.js',
+//       install: './src/js/install.js'
+//     },
+//     output: {
+//       filename: '[name].bundle.js',
+//       path: path.resolve(__dirname, 'dist'),
+//     },
+//     plugins: [
       
-    ],
+//     ],
 
-    module: {
-      rules: [
+//     module: {
+//       rules: [
         
-      ],
-    },
-  };
-};
+//       ],
+//     },
+//   };
+// };
