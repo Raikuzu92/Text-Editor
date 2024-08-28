@@ -16,9 +16,9 @@ const initdb = async () =>
 export const putDb = async (content) => {
   console.log('Adding content to the database:', content);
 
-  const kittiesDb = await openDB("vacations", 1);
-  const tx = kittiesDb.transaction("vacations", "readwrite");
-  const store = tx.objectStore("vacations");
+  const kittiesDb = await openDB("jate", 1);
+  const tx = kittiesDb.transaction("jate", "readwrite");
+  const store = tx.objectStore("jate");
   const request = store.put({ id: 1, value: content });
   const result = await request;
 
@@ -28,7 +28,7 @@ export const putDb = async (content) => {
     console.log("Saved data:", savedData.value);
     return savedData.value;
   } else {
-    console.log("I think your still on vacation we didn't make it to the database!");
+    console.log("I think your still on jate we didn't make it to the database!");
     return null;
   }
 };
@@ -37,9 +37,9 @@ export const putDb = async (content) => {
 export const getDb = async () => {
   console.log("Get all notes from the database");
 
-  const kittiesDb = await openDB("vacations", 1);
-  const tx = kittiesDb.transaction("vacations", "readonly");
-  const store = tx.objectStore("vacations");
+  const kittiesDb = await openDB("jate", 1);
+  const tx = kittiesDb.transaction("jate", "readonly");
+  const store = tx.objectStore("jate");
   const request = store.get(1);
   const result = await request;
 
@@ -51,10 +51,10 @@ export const getDb = async () => {
 };
 
 export const deleteDb = async () => {
-  console.log("Uh oh! Vacation is no where near today!");
-  const kittiesDb = await openDB("vacations", 1);
-  const tx = kittiesDb.transaction("vacations", "readwrite");
-  const store = tx.objectStore("vacations");
+  console.log("Uh oh! jate is no where near today!");
+  const kittiesDb = await openDB("jate", 1);
+  const tx = kittiesDb.transaction("jate", "readwrite");
+  const store = tx.objectStore("jate");
   const request = store.delete(1);
   await request;
 
